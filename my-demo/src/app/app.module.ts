@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductListComponent } from './products/components/product-list/product-list.component';
@@ -16,6 +17,7 @@ import { ProductDetailsComponent } from './products/components/product-details/p
 import { FirstComponent } from './subjects/components/first/first.component';
 import { SecondComponent } from './subjects/components/second/second.component';
 import { CustomerProducerComponent } from './subjects/components/customer-producer/customer-producer.component';
+import { HeroFormComponent } from './hero-form/hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,13 @@ import { CustomerProducerComponent } from './subjects/components/customer-produc
     ProductDetailsComponent,
     FirstComponent,
     SecondComponent,
-    CustomerProducerComponent
+    CustomerProducerComponent,
+    HeroFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule, FormsModule, ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,3 @@
 <p>welcome works!</p>
+<!--  <input type="text" (keyup)="onKey($event)"> -->
+<input type="text" #myInput (keyup)="onKey(myInput.value)">

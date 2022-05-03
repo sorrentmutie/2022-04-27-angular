@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.css']
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
+  // onKey(payload: KeyboardEvent){
+  //   //console.log(payload.target.value);
+  //   const myInput = payload.target as HTMLInputElement;
+  //   console.log(myInput.value);
+  // }
+
+  onKey(value: string) {
+    console.log(value);
   }
 
 }

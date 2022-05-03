@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HeroFormComponent } from './hero-form/hero-form/hero-form.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
 import { RandomUsersPageComponent } from './randomusers/pages/random-users-page/random-users-page.component';
@@ -15,9 +16,10 @@ const routes: Routes = [
   {path: 'products/:id', component: ProductDetailsComponent },
   {path: 'reqres', component: ReqResPageComponent},
   {path: 'customerproducer', component: CustomerProducerComponent},
+  {path: 'heroform', component: HeroFormComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'first', component: FirstComponent},
-  {path: '', redirectTo: 'customerproducer', pathMatch: 'full'},
+  {path: '', redirectTo: 'heroform', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
 
 ];
