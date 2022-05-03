@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  productsApiUrl: "http://localhost:7000/products",
+  randomApiUrl: "https://randomuser.me/api?results=",
+  reqresUrl: "https://reqres.in/api/users?page=2"
 };
 
 /*

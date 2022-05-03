@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ConnectableObservable } from 'rxjs';
 import { Address, Person, Product } from '../../models/product';
 
 @Component({
@@ -6,7 +7,7 @@ import { Address, Person, Product } from '../../models/product';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent  {
+export class ProductListComponent implements OnChanges {
 
   //products: Product[] | undefined = [];
   @Input() products: Product[] = [];
@@ -20,6 +21,10 @@ export class ProductListComponent  {
     this.address = { street: "Via del Pino", number: "1" };
     this.person = {id: 1, address: this.address}
    }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log("On changes");
+    console.log(changes);
+  }
 
    showDetails(product: Product): void {
      //alert(product.name);
