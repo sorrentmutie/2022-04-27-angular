@@ -9,6 +9,13 @@ import { AddressPipe } from './products/pipes/address.pipe';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
 import { RandomUsersPageComponent } from './randomusers/pages/random-users-page/random-users-page.component';
 import { ReqResPageComponent } from './reqres/pages/req-res-page/req-res-page.component';
+import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { MenuComponent } from './shared/components/menu/menu.component';
+import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
+import { FirstComponent } from './subjects/components/first/first.component';
+import { SecondComponent } from './subjects/components/second/second.component';
+import { CustomerProducerComponent } from './subjects/components/customer-producer/customer-producer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +25,14 @@ import { ReqResPageComponent } from './reqres/pages/req-res-page/req-res-page.co
     AddressPipe,
     ProductsPageComponent,
     RandomUsersPageComponent,
-    ReqResPageComponent
+    ReqResPageComponent,
+    WelcomeComponent,
+    NotFoundComponent,
+    MenuComponent,
+    ProductDetailsComponent,
+    FirstComponent,
+    SecondComponent,
+    CustomerProducerComponent
   ],
   imports: [
     BrowserModule,

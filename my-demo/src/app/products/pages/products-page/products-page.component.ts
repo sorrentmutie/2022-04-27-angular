@@ -1,4 +1,5 @@
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Product } from '../../models/product';
 import { ProductsService } from '../../products.service';
@@ -13,22 +14,12 @@ export class ProductsPageComponent implements OnInit, OnDestroy, OnChanges  {
   productsInOffer: Product[] = [];
   subscription: Subscription | undefined = undefined;
 
-  // productsExpired: Product[] = [];
-
-  constructor(private service: ProductsService){
-    // this.productsInOffer = service.getProducts();
-    // this.productsExpired = service.getProductsExpired();
+  constructor(private service: ProductsService, private router: Router){
   }
   ngOnChanges(changes: SimpleChanges): void {
     throw new Error('Method not implemented.');
   }
   ngOnInit(): void {
-    // this.subscription = this.service.getProductsAsObservable().subscribe(
-    //   prodotti => {
-    //     console.log(prodotti);
-    //     this.productsInOffer = prodotti;
-    //   }
-    // );
     this.subscription = this.service.getProductsAsObservableFromApi().subscribe(
       prodotti => {
         console.log(prodotti);
@@ -41,7 +32,8 @@ export class ProductsPageComponent implements OnInit, OnDestroy, OnChanges  {
   }
 
   showDetailsInPage(message: Product) {
-    alert(message.id);
+    this.router.navigate(['/products', message.id]);
+   // alert(message.id);
   }
 
 }
