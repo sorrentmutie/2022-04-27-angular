@@ -1,3 +1,7 @@
 <p>welcome works!</p>
 <!--  <input type="text" (keyup)="onKey($event)"> -->
-<input type="text" #myInput (keyup)="onKey(myInput.value)">
+<!-- <input type="text" #myInput (keyup)="onKey(myInput.value)"> -->
+
+<div *ngIf="myInput">
+  <input type="text" [formControl]="myInput">
+</div>
