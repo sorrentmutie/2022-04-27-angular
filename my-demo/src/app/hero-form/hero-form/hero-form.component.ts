@@ -10,7 +10,11 @@ export class HeroFormComponent {
 
   hero = new Hero(1, "Dr. Salvatore", "Magia", "Salvatore Sorrentino");
   powers = ["Magia", "Invisibilità", "Forza"];
-  constructor() { }
+  mySubmit(){
+    console.log("submit:" + this.hero.name);
+  }
 
-
+  resetForm(){
+    this.hero = new Hero(1,"","","");
+  }
 }

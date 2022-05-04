@@ -18,6 +18,7 @@ import { FirstComponent } from './subjects/components/first/first.component';
 import { SecondComponent } from './subjects/components/second/second.component';
 import { CustomerProducerComponent } from './subjects/components/customer-producer/customer-producer.component';
 import { HeroFormComponent } from './hero-form/hero-form/hero-form.component';
+import { HeroReactiveFormComponent } from './hero-reactive-form/hero-reactive-form/hero-reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { HeroFormComponent } from './hero-form/hero-form/hero-form.component';
     FirstComponent,
     SecondComponent,
     CustomerProducerComponent,
-    HeroFormComponent
+    HeroFormComponent,
+    HeroReactiveFormComponent
   ],
   imports: [
     BrowserModule,

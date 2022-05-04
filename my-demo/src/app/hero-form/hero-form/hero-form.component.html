@@ -1,8 +1,20 @@
-<form #mioForm="ngForm">
+<form #mioForm="ngForm"(ngSubmit)="mySubmit()" >
 
   <div class="form-group">
     <label for="nome">Nome</label>
-    <input [(ngModel)]="hero.name" type="text" id="nome" name="nome" required minlength="4"  class="form-control">
+    <input #myName="ngModel" [(ngModel)]="hero.name" type="text" id="nome" name="nome" required minlength="4"  class="form-control">
+
+    <div class="alert alert-danger"
+       *ngIf="myName.invalid && (myName.dirty || myName.touched)">
+      <div *ngIf="myName && myName.errors && myName.errors['required']">
+        Il nome è obbligatorio
+      </div>
+      <div  *ngIf="myName && myName.errors && myName.errors['minlength']">
+        La lunghezza minima è 4
+      </div>
+    </div>
+
+
   </div>
 
   <div class="form-group">
@@ -19,4 +31,5 @@
 
 
   <button [disabled]="mioForm.invalid" style="margin-top: 10px;" type="submit" class="btn btn-success">OK</button>
+  <button style="margin-top: 10px;"  class="btn btn-warning" (click)="resetForm();mioForm.resetForm()">Reset</button>
 </form>
