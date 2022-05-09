@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   productsApiUrl: "http://localhost:7000/products",
   randomApiUrl: "https://randomuser.me/api?results=",
-  reqresUrl: "https://reqres.in/api/users?page=2"
+  reqresUrl: "https://reqres.in/api/users?page=2",
+  placeholder: "https://jsonplaceholder.typicode.com/users?q=",
+  toDo: "https://jsonplaceholder.typicode.com/todos"
 };
 
 /*

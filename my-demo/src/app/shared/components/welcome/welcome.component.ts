@@ -1,6 +1,9 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { from, map, catchError, of, throwError, Observable, debounceTime, delay, retry } from 'rxjs';
+import { combineLatest, debounceTime, filter, forkJoin, interval, map, mergeAll, mergeMap, subscribeOn, switchMap, take } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { ToDo, User} from './welcone.model';
 
 @Component({
   selector: 'app-welcome',
@@ -9,56 +12,28 @@ import { from, map, catchError, of, throwError, Observable, debounceTime, delay,
 })
 export class WelcomeComponent  {
 
+    myInputElement : FormControl = new FormControl();
 
-  srcArray = from([1,2,3, 'A',4]);
-  myInput: FormControl = new FormControl('');
-  input$: Observable<string> | undefined = undefined;
-
-  constructor() {
-
-     this.input$ = this.myInput.valueChanges;
-
-     this.input$
-      .pipe(
-        debounceTime(2000),
-        delay(1000),
-        retry(3))
-      .subscribe( valore => console.log(valore));
-
-
-     const myObservable = this.srcArray.pipe(
-       map( valore => {
-        let risultato = (valore as number) * 2;
-        if(Number.isNaN(risultato)) {
-          console.log("Errore di calcolo");
-          return of(-1);
-       //   throw new Error("Il risultato è NaN");
-
-        }
-        return risultato;
-       }),
-      //  catchError(errore => {
-      //    console.log('Sono in catch Error');
-      //    // return of(-1);
-      //    //return throwError(() => new Error('test'))
-      //  })
-     );
-
-     myObservable.subscribe(
-       valore => console.log("Valore ricevuto: " + valore),
-       errore => console.log("Errore nel subscriber: " + errore),
-       () => console.log("Processamento completo")
-     );
+    constructor(private http: HttpClient) {
+      const url = environment.placeholder;
+      this.myInputElement.valueChanges
+        .pipe(
+          filter( x => x.length > 3 ),
+          debounceTime(1000),
+        //  map( x => this.http.get<User[]>(url + x)),
+         // mergeAll()
+         switchMap( x =>  this.http.get<User[]>(url + x))
+        )
+        .subscribe(dati => console.log(dati))
+        // .subscribe(response => response.subscribe(dati => console.log(dati)));
 
 
-   }
-  // onKey(payload: KeyboardEvent){
-  //   //console.log(payload.target.value);
-  //   const myInput = payload.target as HTMLInputElement;
-  //   console.log(myInput.value);
-  // }
-
-  // onKey(value: string) {
-  //   console.log(value);
-  // }
-}
+        combineLatest([
+          this.http.get<User[]>(url),
+          this.http.get<ToDo[]>(environment.toDo),
+          interval(5000).pipe(take(5)),
+          this.myInputElement.valueChanges
+        ])
+        .subscribe( x => console.log(x));
+    }
+  }

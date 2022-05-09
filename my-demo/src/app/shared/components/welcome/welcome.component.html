@@ -1,7 +1,4 @@
 <p>welcome works!</p>
-<!--  <input type="text" (keyup)="onKey($event)"> -->
-<!-- <input type="text" #myInput (keyup)="onKey(myInput.value)"> -->
+<input type="text" [formControl]="myInputElement">
 
-<div *ngIf="myInput">
-  <input type="text" [formControl]="myInput">
-</div>
+<button class="btn btn-warning" routerLink="/users/ervi">Search</button>
