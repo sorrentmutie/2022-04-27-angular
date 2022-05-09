@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +20,9 @@ import { CustomerProducerComponent } from './subjects/components/customer-produc
 import { HeroFormComponent } from './hero-form/hero-form/hero-form.component';
 import { HeroReactiveFormComponent } from './hero-reactive-form/hero-reactive-form/hero-reactive-form.component';
 import { UsersComponent } from './placeholder/components/users/users.component';
+import { FirstInterceptor } from './shared/interceptors/first.interceptor';
+import { SecondInterceptor } from './shared/interceptors/second.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -44,9 +47,13 @@ import { UsersComponent } from './placeholder/components/users/users.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule, FormsModule, ReactiveFormsModule
+    HttpClientModule, FormsModule, ReactiveFormsModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: FirstInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: SecondInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

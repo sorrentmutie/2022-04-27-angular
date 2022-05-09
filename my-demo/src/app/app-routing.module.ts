@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'heroreactiveform', component: HeroReactiveFormComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'first', component: FirstComponent},
-  {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+  {path: '', redirectTo: 'products', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
 
 ];
