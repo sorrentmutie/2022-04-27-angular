@@ -26,6 +26,8 @@ import { SecondInterceptor } from './shared/interceptors/second.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { GlobalNotificationComponent } from './shared/components/global-notification/global-notification.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { LoginComponent } from './login/components/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     HeroReactiveFormComponent,
     UsersComponent,
     GlobalNotificationComponent,
-    FooterComponent
+    FooterComponent, LoginComponent
   ],
   imports: [
     BrowserModule,

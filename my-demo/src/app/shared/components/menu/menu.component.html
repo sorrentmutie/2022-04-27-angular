@@ -24,6 +24,15 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/reqres']">{{lastCustomer?.name}}</a>
         </li>
+        <li class="nav-item" style="float: right" *ngIf="userDataObservable$ | async as userData; else bloccoElse">
+          <div *ngIf="userData">
+            <a class="nav-link" [routerLink]="['/reqres']">{{userData.lastname}} {{userData.name}}<img width="60px" height="50px" src="{{userData.picture}}"></a>
+            <button class="btn btn-info" (click)="doLogout()">LogOut</button>
+          </div>
+        </li>
+        <ng-template #bloccoElse>
+          <button class="btn btn-info" (click)="doLogin()">LogIn</button>
+        </ng-template>
       </ul>
     </div>
   </div>

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeroFormComponent } from './hero-form/hero-form/hero-form.component';
 import { HeroReactiveFormComponent } from './hero-reactive-form/hero-reactive-form/hero-reactive-form.component';
+import { LoginComponent } from './login/components/login/login.component';
+import { AuthGuard } from './login/guards/auth.guard';
 import { UsersComponent } from './placeholder/components/users/users.component';
 import { ProductDetailsComponent } from './products/components/product-details/product-details.component';
 import { ProductsPageComponent } from './products/pages/products-page/products-page.component';
@@ -15,7 +17,7 @@ import { CustomerProducerComponent } from './subjects/components/customer-produc
 import { FirstComponent } from './subjects/components/first/first.component';
 
 const routes: Routes = [
-  {path: 'randomusers', component: RandomUsersPageComponent},
+  {path: 'randomusers', component: RandomUsersPageComponent, canActivate: [AuthGuard]},
   {path: 'users/:q', component: UsersComponent},
   {path: 'products', component: ProductsPageComponent },
   {path: 'products/:id', component: ProductDetailsComponent },
@@ -25,7 +27,8 @@ const routes: Routes = [
   {path: 'heroreactiveform', component: HeroReactiveFormComponent},
   {path: 'welcome', component: WelcomeComponent},
   {path: 'first', component: FirstComponent},
-  {path: '', redirectTo: 'products', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: '**', component: NotFoundComponent}
 
 ];
