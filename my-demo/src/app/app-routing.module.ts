@@ -9,6 +9,8 @@ import { RandomUsersPageComponent } from './randomusers/pages/random-users-page/
 import { ReqResPageComponent } from './reqres/pages/req-res-page/req-res-page.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 import { WelcomeComponent } from './shared/components/welcome/welcome.component';
+import { FirstGuard } from './shared/guards/first.guard';
+import { SecondGuard } from './shared/guards/second.guard';
 import { CustomerProducerComponent } from './subjects/components/customer-producer/customer-producer.component';
 import { FirstComponent } from './subjects/components/first/first.component';
 
@@ -17,7 +19,7 @@ const routes: Routes = [
   {path: 'users/:q', component: UsersComponent},
   {path: 'products', component: ProductsPageComponent },
   {path: 'products/:id', component: ProductDetailsComponent },
-  {path: 'reqres', component: ReqResPageComponent},
+  {path: 'reqres', component: ReqResPageComponent, canActivate: [FirstGuard, SecondGuard]},
   {path: 'customerproducer', component: CustomerProducerComponent},
   {path: 'heroform', component: HeroFormComponent},
   {path: 'heroreactiveform', component: HeroReactiveFormComponent},

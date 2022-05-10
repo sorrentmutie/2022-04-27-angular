@@ -2,5 +2,8 @@ export enum Events {
   CustomerAdded,
   CustomerUpdated,
   CustomerSelected,
-  CustomerDeleted
+  CustomerDeleted,
+  HttpRequestSent,
+  HttpResponseReceived
+
 }

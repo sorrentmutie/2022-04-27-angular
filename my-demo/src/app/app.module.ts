@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +24,8 @@ import { UsersComponent } from './placeholder/components/users/users.component';
 import { FirstInterceptor } from './shared/interceptors/first.interceptor';
 import { SecondInterceptor } from './shared/interceptors/second.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { GlobalNotificationComponent } from './shared/components/global-notification/global-notification.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -42,10 +45,13 @@ import { ToastrModule } from 'ngx-toastr';
     CustomerProducerComponent,
     HeroFormComponent,
     HeroReactiveFormComponent,
-    UsersComponent
+    UsersComponent,
+    GlobalNotificationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule, FormsModule, ReactiveFormsModule,
     ToastrModule.forRoot(), // ToastrModule added
